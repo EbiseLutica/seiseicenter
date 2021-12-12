@@ -1,0 +1,80 @@
+﻿@charset "UTF-8";
+
+.urajijo-control {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.urajijo-menu {
+	clear: both;
+}
+
+.urajijo-submenu {
+	clear: both;
+	margin-left: 48px;
+}
+
+.urajijo-label {
+	display: inline-block;
+	float: left;
+}
+
+.urajijo-value {
+	display: inline-block;
+	float: right;
+	width: 72px;
+	text-align: right;
+}
+
+.urajijo-num {
+	font-family: "ＭＳ ゴシック",
+		"MS Gothic",
+		"Osaka−等幅",
+		"Osaka-Mono",
+		"IPAゴシック",
+		"IPAGothic",
+		monospace;
+	font-size: 10pt;
+	text-align: right;
+	ime-mode: disabled;
+}
+
+.urajijo-select {
+	display: inline-block;
+	float: right;
+	width: 80px;
+}
+
+.urajijo-buttons {
+	clear: both;
+	text-align: center;
+}
+
+.urajijo-output {
+	font-family: "ＭＳ ゴシック",
+		"MS Gothic",
+		"Osaka−等幅",
+		"Osaka-Mono",
+		"IPAゴシック",
+		"IPAGothic",
+		monospace;
+	font-size: 10pt;
+	width: 12em;
+	height: 18em;
+	resize: both;
+}
+
+.urajijo-error {
+	background-color: #FFC0C0;
+	color: #800000;
+}
+
+.urajijo-warn {
+	background-color: #FFFFA0;
+	color: #404000;
+}
+
+.urajijo-info {
+	background-color: #C0FFC0;
+	color: #004000;
+}

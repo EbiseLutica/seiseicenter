@@ -1,0 +1,377 @@
+﻿@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+p + p {
+	margin-top: 1em;
+}
+
+html {
+	background-color: white;
+	color: black;
+	font-family: sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	font-feature-settings: "palt";
+	/* height: 100vh; */
+	/* overflow: hidden; */
+}
+
+body {
+	/* height: 100vh; */
+	/* overflow: hidden; */
+}
+
+head {
+	display: none;
+}
+
+#header {
+	background-color: #803832;
+	padding: 16px;
+	color: white;
+}
+
+#content {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+@media (max-width: 487px) {
+	#header {
+		padding: 0px;
+	}
+
+	#header > p > img {
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		padding: 16px;
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-width: 319px) {
+	#header > p img {
+		padding: 5%;
+	}
+}
+
+#topbar {
+	display: none;
+	background-color: #803832;
+	text-align: center;
+	color: white;
+}
+
+#side {
+	float: left;
+	width: 240px;
+}
+
+#footer {
+	clear: both;
+	background-color: #803832;
+	padding: 8px;
+	text-align: center;
+	color: white;
+}
+
+@media (max-width: 639px) {
+	#topbar {
+		display: block;
+	}
+
+	#side {
+		display: none;
+	}
+
+	#nav {
+		float: none;
+		width: auto;
+	}
+
+	#link {
+		float: none;
+		width: auto;
+	}
+
+	#content {
+		height: auto;
+		margin-left: 0px;
+		margin-right: 0px;
+		overflow: visible;
+	}
+}
+
+@media (min-width: 1024px) {
+	#side {
+		float: none;
+		width: auto;
+	}
+
+	#nav {
+		float: left;
+		width: 240px;
+		/* height: calc(100vh - 108px - 46px); */
+		/* max-height: calc(100vh - 108px - 46px); */
+		/* overflow-y: hidden; */
+	}
+
+	#link {
+		float: right;
+		width: 240px;
+		/* height: calc(100vh - 108px - 46px); */
+		/* max-height: calc(100vh - 108px - 46px); */
+		/* overflow-y: hidden; */
+	}
+
+	#content {
+		/* height: calc(100vh - 108px - 46px); */
+		/* max-height: calc(100vh - 108px - 46px); */
+		/* overflow-y: scroll; */
+	}
+}
+
+#history { /* 更新履歴が長すぎるのでスクロールさせる */
+	white-space: nowrap;
+	overflow: auto;
+}
+
+div.box {
+	margin: 8px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #803832;
+	background-color: white;
+	padding: 7px; /* 8px-1px */
+	color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+div.box h2 {
+	margin: -8px;
+	margin-bottom: 8px;
+	background-color: #803832;
+	padding: 8px;
+	color: white;
+}
+
+@media (max-width: 319px) {
+	div.box {
+		margin: 8px 0px;
+		border-style: none;
+		border-width: 0px;
+		border-color: transparent;
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-top-color: #803832;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: #803832;
+		padding: 8px;
+		padding-top: 7px; /* 8px-1px */
+		padding-bottom: 7px; /* 8px-1px */
+	}
+
+	div.box div.box {
+		border-style: solid;
+		border-width: 1px;
+		border-color: #803832;
+		padding: 7px; /* 8px-1px */
+	}
+}
+
+p.hidari {
+	float: left;
+}
+
+p.migi {
+	text-align: right;
+}
+
+ul, ol {
+	margin-left: 18px; /* 8px (list-*.png) + 10px (padding) */
+	list-style-position: inside;
+}
+
+:not(li) > ul,
+:not(li) > ol {
+	margin-left: 2px;
+}
+
+ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%14%49%44%41%54%08%D7%63%B0%61%88%63%D8%CF%F0%1F%0C%EB%18%6C%00%27%30%05%11%4B%5A%2A%68%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+ul ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%12%49%44%41%54%08%D7%63%B0%61%70%62%68%84%42%27%06%1B%00%18%10%03%01%2E%59%53%B7%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+ul ul ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%14%49%44%41%54%08%D7%63%60%60%A8%63%F0%63%88%03%92%20%C8%00%00%14%80%02%A5%25%7D%47%73%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+ul ul ul ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%12%49%44%41%54%08%D7%63%60%60%A8%63%70%82%C2%3A%06%06%00%10%30%02%05%DF%09%D0%42%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+ul ul ul ul ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%13%49%44%41%54%08%D7%63%60%00%02%09%06%1D%06%1B%20%09%04%00%04%C0%00%99%EE%1D%57%B7%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+ul ul ul ul ul ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%12%49%44%41%54%08%D7%63%60%00%02%09%06%15%20%94%00%31%01%03%D0%00%79%E1%19%D8%EE%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+ul ul ul ul ul ul ul {
+	list-style-image: url(data:image/png,%89%50%4E%47%0D%0A%1A%0A%00%00%00%0D%49%48%44%52%00%00%00%08%00%00%00%08%01%03%00%00%00%FE%C1%2C%C8%00%00%00%06%50%4C%54%45%FF%FF%FF%80%38%32%6B%BF%25%85%00%00%00%0F%49%44%41%54%08%D7%63%60%00%03%09%20%04%03%00%01%90%00%31%73%F1%4B%14%00%00%00%00%49%45%4E%44%AE%42%60%82);
+}
+
+hr {
+	margin: 8px -8px;
+	border-style: none; /* 立体的な枠線をなくす */
+	height: 1px; /* 水平線の高さ */
+	background-color: #803832; /* 水平線の色 */
+}
+
+#header hr {
+	margin-top: 16px;
+	margin-bottom: 16px;
+	background-color: white; /* 水平線の色 */
+}
+
+#footer hr {
+	background-color: white; /* 水平線の色 */
+}
+
+div.box hr {
+	background-color: #803832; /* 水平線の色 */
+}
+
+a:link, a:visited {
+	color: #803832;
+	text-decoration: underline;
+}
+
+#header a:link, #topbar a:link, #footer a:link, div.box h2 a:link,
+#header a:visited, #topbar a:visited, #footer a:visited, div.box h2 a:visited {
+	color: white;
+}
+
+#topbar a {
+	display: inline-block;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	padding: 11px; /* 12px-1px */
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+a img {
+	border-style: none;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 1px;
+	empty-cells: show;
+}
+
+th, td {
+	font-weight: normal;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+th {
+	background: #E0CECC;
+}
+
+td {
+	background: #F8F3F3;
+}
+
+form {
+	margin: -4px;
+}
+
+form > * {
+	margin: 4px;
+	font: inherit;
+}
+
+input[type="text"] {
+	margin-bottom: 0.25em;
+	border-style: solid;
+	border-width: 1px;
+	border-color: transparent;
+	border-bottom-color: #803832;
+	line-height: 1em;
+}
+
+textarea {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #803832;
+	padding: 2px;
+}
+
+button, input[type="button"],
+input[type="submit"], input[type="reset"] {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #803832;
+	background-color: #803832;
+	color: white;
+	padding: 1px 3px;
+	vertical-align: middle;
+}
+
+button.secondary, input.secondary[type="button"],
+input.secondary[type="submit"], input.secondary[type="reset"] {
+	background-color: white;
+	color: #803832;
+}
+
+button:active, input[type="button"]:active,
+input[type="submit"]:active, input[type="reset"]:active {
+	padding-top: 2px;
+	padding-bottom: 0px;
+}
+
+/*
+button, input[type="button"],
+input[type="submit"], input[type="reset"] {
+	padding: 1px;
+}
+*/
+
+input.spoiler {
+	display: none;
+}
+
+input.spoiler + label:after {
+	display: inline;
+	color: #803832;
+	text-decoration: underline;
+	content: "開く";
+}
+
+input.spoiler:checked + label:after {
+	content: "閉じる";
+}
+
+input.spoiler:not(:checked) + label + * {
+	display: none;
+}

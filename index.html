@@ -1,0 +1,676 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<title>CBRK 803832 - 生成センター</title>
+		<link rel="stylesheet" href="./style/default.css" type="text/css">
+		<link rel="stylesheet" href="./style/urajijo.css" type="text/css">
+		<script src="./script/urajijo.js" type="text/javascript" async="async" defer="defer"></script>
+		<meta name="author" content="803832">
+		<meta name="copyright" content="Copyright (C) 2010 803832, some rights reserved.">
+		<meta name="description" content="CBRK 803832は私、803832による、音楽ゲーム関連物他を扱うサイトです。">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1" />
+		<meta name="theme-color" content="#803832">
+		<meta name="robots" content="index,follow">
+	</head>
+	<body>
+		<div id="header">生成センター</div>
+		<div id="content">
+			<div class="box">
+				<h2>お知らせ</h2>
+				<p>ヒテッマンリスペクト＆用語まとめ Wiki にあったアーカイブデータを元に復元したものです。元の製作者さんとは異なる人が運営しており、見た目に改良を加えてはいますが、できることは同じです。</p>
+				<p>生成センターではフォームの各項目の値を保存、次回アクセス時に復元するためにlocalStorageを使用するようになりました。localStorageに保存された各項目の値はこのページ内でのみ使用され、803832氏や第三者によってデータが収集されることはありません。保存された各項目を削除するにはgeocities.jpのlocalStorageを削除してください。</p>
+			</div>
+			<div class="box">
+				<h2>ここが生成センターね！</h2>
+				<p>このスクリプトはデタラメなチートコードを生成することにより、ゲームをよりカオスに楽しめます。</p>
+				<p>生成されたチートコードによる、いかなる損害についても責任を負いません。</p>
+				<ul>
+					<li>8ビット機<ul>
+						<li><a href="#URAJIJO_NES">ファミコン/NES</a></li>
+						<li><a href="#URAJIJO_GB">ゲームボーイ (カラー)</a></li>
+						<li><a href="#URAJIJO_SG">SEGA SG-1000/マークIII/Master System/ゲームギア</a></li>
+					</ul></li>
+					<li>16ビット機<ul>
+						<li><a href="#URAJIJO_SNES">スーパーファミコン/SNES</a></li>
+						<li><a href="#URAJIJO_MD">メガドライブ/Genesis</a></li>
+					</ul></li>
+					<li>32ビット機<ul>
+						<li><a href="#URAJIJO_GBA">ゲームボーイアドバンス</a></li>
+					</ul></li>
+					<li><a href="#URAJIJO_USA">汎用コード生成</a></li>
+					<li><a href="#URAJIJO_HEX">16進数</a></li>
+					<li><a href="#URAJIJO_BENCH">ベンチマーク</a></li>
+				</ul>
+			</div>
+			<div class="box">
+				<h2>更新情報</h2>
+				<div id="history">
+					<p><time datetime="2021-12-12">2021/12/12</time> フォークして初稼働。</p>
+				</div>
+			</div>
+			<div class="box" id="URAJIJO_NES">
+				<h2>ファミコン/NES</h2>
+				<p>使い方 (VirtuaNES) (VirtuaNES生成センター内蔵版は公開終了しました。)</p>
+				<ol start="0">
+					<li>生成されたコードをテキストファイル(.vct)に保存します。</li>
+					<li>チートコードを適用させたいゲームを開始させます。</li>
+					<li>メニューの[ツール(T)]→[チートコード(C)...]を選択します。</li>
+					<li>[ロード]をクリックして保存したファイルを読み込み、[OK]をクリックします。</li>
+					<li>Deleteキーでチートコードを無効、Insertキーで有効にできます。</li>
+					<li>別のゲームに適用させる場合は1. に戻ります。</li>
+				</ol>
+				<hr>
+				<form name="urajijo_nes" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">コード形式:</span>
+							<div class="urajijo-select">
+								<label><input type="radio" name="code_type" value="VirtuaNES">VirtuaNES</label>
+								<label><input type="radio" name="code_type" value="NNNesterJ" checked="checked">NNNesterJ</label>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">ゼロページ:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="zeropage_num" size="4" value="5">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">RAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="ram_num" size="4" value="5">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">SRAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="sram_num" size="4" value="2">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">ROM領域 (VirtuaNES):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="rom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">マッパー拡張メモリ (NNNesterJ):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="exram_num" size="4" value="2">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カスタム:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_start" size="5" maxlength="5" value="0000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_end" size="5" maxlength="5" value="07FF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_nes(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_nes(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-nes-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_SG">
+				<h2>SEGA SG-1000/マークIII/Master System/ゲームギア</h2>
+				<p>Kega Fusion形式のチートコードを生成するはずです。全機種対応のゲームにはSG-1000用のコードをお使いください。</p>
+				<p>なお、RAM領域 (マークIII・Master System・ゲームギア) は一部RAM領域 (SG-1000) と重複しております。</p>
+				<hr>
+				<form name="urajijo_sg" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">RAM領域 (SG-1000):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="sg_ram_num" size="4" value="16">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">RAM領域 (マークIII・Master System・ゲームギア):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="mk3_ram_num" size="4" value="32">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">ROM領域1:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="rom1_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">ROM領域2 (外部RAMの場合あり):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="rom2_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カスタム:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_start" size="4" maxlength="4" value="C000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_end" size="4" maxlength="4" value="C7FF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_sg(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_sg(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-sg-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_GB">
+				<h2>ゲームボーイ (カラー)</h2>
+				<p>Game Shark形式のチートコードを生成します。</p>
+				<p>カスタム生成のアドレスの先頭2桁については<a href="http://tyakata.com/mem_tool_code_format.html#GBPAR" target="_blank">MECCのコード形式ページ</a>を参照して下さい。</p>
+				<p>白黒RAM後半とカラー拡張RAMは領域が重複しています。</p>
+				<hr>
+				<form name="urajijo_gb" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">RAM前半領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="ram_num" size="4" value="16">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">白黒RAM後半領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="lram_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カラー拡張RAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="cram_num" size="4" value="56">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">HRAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="hram_num" size="4" value="4">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">ROM領域1:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="rom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カスタム:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_start_hi" size="2" maxlength="2" value="91"><input class="urajijo-num" type="text" name="custom_start_lo" size="4" maxlength="4" value="D000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_end_hi" size="2" maxlength="2" value="91"><input class="urajijo-num" type="text" name="custom_end_lo" size="4" maxlength="4" value="DFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_gb(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_gb(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-gb-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_SNES">
+				<h2>スーパーファミコン/SNES</h2>
+				<p>Pro Action Replay形式のチートコードを生成するはずです。</p>
+				<hr>
+				<form name="urajijo_snes" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">RAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="ram_num" size="4" value="32">個</span>
+						</div>
+						<!-- TODO: HiROM (C0:0000-FF:FFFF) -->
+						<!-- TODO: HiROM (40:0000-7D:FFFF) -->
+						<!-- TODO: LoROM (80:8000-FF:FFFF) -->
+						<!-- TODO: LoROM (00:8000-7D:FFFF) -->
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カスタム:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_start_hi" size="2" maxlength="2" value="80">:<input class="urajijo-num" type="text" name="custom_start_lo" size="4" maxlength="4" value="8000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_end_hi" size="2" maxlength="2" value="FF">:<input class="urajijo-num" type="text" name="custom_end_lo" size="4" maxlength="4" value="FFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_snes(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_snes(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-snes-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_MD">
+				<h2>メガドライブ/Genesis</h2>
+				<p>KEGA Fusion形式のチートコードを生成するはずです。</p>
+				<hr>
+				<form name="urajijo_md" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">68k RAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="m68k_ram_num" size="4" value="32">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">メガCD PRAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="mcd_pram_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">メガCD WRAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="mcd_wram_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">Z80 RAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="z80_ram_num" size="4" value="16">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カートリッジROM/RAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="rom_num" size="4" value="64">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カスタム:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_start" size="6" maxlength="6" value="200000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_end" size="6" maxlength="6" value="23FFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_md(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_md(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-md-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_GBA">
+				<h2>ゲームボーイアドバンス</h2>
+				<p>Visual Boy Advance形式のチートコードを生成します。PCM音源のある機種のため、爆音にご注意ください。</p>
+				<hr>
+				<form name="urajijo_gba" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">内部ワークRAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="iwram_num" size="4" value="16">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">外部ワークRAM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="ewram_num" size="4" value="48">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">ROM領域:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="rom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">カスタム:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_start" size="8" maxlength="8" value="00400000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_end" size="8" maxlength="8" value="004FFFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="custom_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="2" maxlength="2" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="2" maxlength="2" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_gba(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_gba(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-gba-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_USA">
+				<h2>汎用コード生成</h2>
+				<p>汎用のコードを生成します。区切り文字が指定可能ですが、タブ文字は直接入力できないようです。</p>
+				<hr>
+				<form name="urajijo_usa" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">桁数 (2/4/6/8)・区切り文字:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="addr_digit" size="1" maxlength="1" value="8"><input class="urajijo-num" type="text" name="separator" size="1" value="-"><input class="urajijo-num" type="text" name="data_digit" size="1" maxlength="1" value="2"></span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">アドレス境界 (1/2/4):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="align" size="1" maxlength="1" value="1"></span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">領域1:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="area1_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area1_start" size="8" maxlength="8" value="00400000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area1_end" size="8" maxlength="8" value="004FFFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area1_min" size="8" maxlength="8" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area1_max" size="8" maxlength="8" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">領域2:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="area2_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area2_start" size="8" maxlength="8" value="00400000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area2_end" size="8" maxlength="8" value="004FFFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area2_min" size="8" maxlength="8" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area2_max" size="8" maxlength="8" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">領域3:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="area3_num" size="4" value="0">個</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">開始アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area3_start" size="8" maxlength="8" value="00400000"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">終了アドレス:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area3_end" size="8" maxlength="8" value="004FFFFF"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area3_min" size="8" maxlength="8" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="area3_max" size="8" maxlength="8" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">再生成時:</span>
+						</div>
+						<div class="urajijo-submenu">
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最小値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_min" size="8" maxlength="8" value="00"></span>
+							</div>
+							<div class="urajijo-menu">
+								<span class="urajijo-label">最大値:</span>
+								<span class="urajijo-value"><input class="urajijo-num" type="text" name="regenerate_max" size="8" maxlength="8" value="FF"></span>
+							</div>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_usa(false);">
+							<input type="button" class="secondary" value="なんどもお。" onclick="generate_usa(true);">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-usa-error"></div>
+				</form>
+				<hr>
+				参考:<input id="fyi-spoiler" type="checkbox" class="spoiler"><label for="fyi-spoiler"></label>
+				<div style="margin-left: 1em;">
+					<p>VirtuaNES 1byte: <span style="color: green;">aaaa</span>-01-<span style="color: brown;">dd</span></p>
+					<p>VirtuaNES 2byte: <span style="color: green;">aaaa</span>-02-<span style="color: brown;">dddd</span></p>
+					<p>VirtuaNES 4byte: <span style="color: green;">aaaa</span>-04-<span style="color: brown;">dddddddd</span></p>
+					<p style="margin-left: 1em;">SRAM領域: 6000～7FFF</p>
+					<p style="margin-left: 1em;">ゼロページ: 0000～00FF</p>
+					<p style="margin-left: 1em;">RAM領域: 0100～07FF</p>
+					<p style="margin-left: 1em;">ROM領域: 8000～FFFF</p>
+					<p>NNNesterJ 1byte: <span style="color: green;">aaaa</span>-1-<span style="color: brown;">dd</span></p>
+					<p>NNNesterJ 2byte: <span style="color: green;">aaaa</span>-2-<span style="color: brown;">dddd</span></p>
+					<p>NNNesterJ 4byte: <span style="color: green;">aaaa</span>-4-<span style="color: brown;">dddddddd</span></p>
+					<p style="margin-left: 1em;">ゼロページ: 0000～00FF</p>
+					<p style="margin-left: 1em;">RAM領域: 0100～07FF</p>
+					<p style="margin-left: 1em;">SRAM領域: 10000～1FFFF</p>
+					<p style="margin-left: 1em;">マッパー拡張メモリ領域: 20000～2FFFF</p>
+					<p>MD 1byte: <span style="color: green;">aaaaaa</span>:<span style="color: brown;">dd</span></p>
+					<p>MD 2byte: <span style="color: green;">aaaaaa</span>:<span style="color: brown;">dddd</span></p>
+					<p style="margin-left: 1em;">68k RAM領域: FF0000～FFFFFF</p>
+					<p style="margin-left: 1em;">Z80 RAM領域: A00000～A01FFF</p>
+					<p style="margin-left: 1em;">ROM領域: 000000～3FFFFF</p>
+					<p style="margin-left: 1em;">メガCD PRAM領域: 020000～03FFFF</p>
+					<p style="margin-left: 1em;">メガCD WRAM領域: 200000～23FFFF</p>
+					<p>N64 1byte: 80<span style="color: green;">aaaaaa</span> 00<span style="color: brown;">dd</span></p>
+					<p>N64 2byte: 81<span style="color: green;">aaaaaa</span> <span style="color: brown;">dddd</span></p>
+					<p style="margin-left: 1em;">RAM領域: 00000000～007FFFFF</p>
+					<p>PS1 1byte: 3<span style="color: green;">aaaaaaa</span> 00<span style="color: brown;">dd</span></p>
+					<p>PS1 2byte: 8<span style="color: green;">aaaaaaa</span> <span style="color: brown;">dddd</span></p>
+					<p style="margin-left: 1em;">RAM領域: 00000000～001FFFFF</p>
+					<p>GBA 1byte: 0<span style="color: green;">aaaaaaa</span>:<span style="color: brown;">dd</span></p>
+					<p>GBA 2byte: 0<span style="color: green;">aaaaaaa</span>:<span style="color: brown;">dddd</span></p>
+					<p>GBA 4byte: 0<span style="color: green;">aaaaaaa</span>:<span style="color: brown;">dddddddd</span></p>
+					<p style="margin-left: 1em;">内部RAM領域: 03000000～03007FFF</p>
+					<p style="margin-left: 1em;">外部RAM領域: 02000000～0203FFFF</p>
+					<p style="margin-left: 1em;">ROM領域: 08000000～09FFFFFF</p>
+				</div>
+			</div>
+			<div class="box" id="URAJIJO_HEX">
+				<h2>16進数</h2>
+				<p>ランダムな16進数を生成します。アドレスを変えずに値を変える場合に使用してください。</p>
+				<hr>
+				<form name="urajijo_hex" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">個数:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="num" size="2" value="1">個</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">桁数 (1～8):</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="digit" size="2" maxlength="1" value="2">桁</span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">最小値:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="min" size="8" maxlength="8" value="00"></span>
+						</div>
+						<div class="urajijo-menu">
+							<span class="urajijo-label">最大値:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="max" size="8" maxlength="8" value="FF"></span>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_hex();">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-hex-error"></div>
+				</form>
+			</div>
+			<div class="box" id="URAJIJO_BENCH">
+				<h2>ベンチマーク</h2>
+				<p>大量のコードを生成するのにかかる時間を測定します。一度に生成する個数の目安になるかもしれません。</p>
+				<p>ベンチマーク中はブラウザの応答が無い状態となる場合があります。時間がかかりすぎる場合はブラウザを強制終了させて下さい。</p>
+				<p>ブラウザによってはページの応答が無いという表示が出るようなので、そこから停止させることも出来るでしょう。</p>
+				<hr>
+				<p>所要時間の目安 (52149個で30秒の場合)</p>
+				<p>803832個:約2時間 (約238倍)</p>
+				<p>1411201個:約6時間 (約732倍)</p>
+				<hr>
+				<form name="urajijo_bench" action="javascript:void 0">
+					<div class="urajijo-control">
+						<div class="urajijo-menu">
+							<span class="urajijo-label">個数:</span>
+							<span class="urajijo-value"><input class="urajijo-num" type="text" name="num" size="8" value="52149">個</span>
+						</div>
+						<div class="urajijo-buttons">
+							<input type="button" class="seisei-button" value="せいせい　せい" onclick="generate_bench();">
+						</div>
+						<p style="text-align: center">PR: <a href="http://wikiwiki.jp/htrespect/?%B4%EB%B2%E8%2F%A5%D0%A5%B0%CE%AE%B9%D4%B8%EC%C2%E7%BE%DE2017" target="_blank">バグ流行語大賞2017</a></p>
+					</div>
+					<textarea name="output" class="urajijo-output"></textarea>
+					<div id="urajijo-bench-error"></div>
+				</form>
+			</div>
+		</div>
+		<div id="footer">
+			<p>Copyright (C) 2010 803832, some rights reserved.</p>
+			<p>Banner font: Copyright (C) 2009 KOZiRO, All Rights Reserved.</p>
+		</div>
+	</body>
+</html>
